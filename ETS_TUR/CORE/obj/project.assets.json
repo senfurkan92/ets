@@ -534,11 +534,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\_yazilim\\ETS_TUR\\CORE\\CORE.csproj",
+      "projectUniqueName": "D:\\_yazilim\\dotnet\\ets\\ETS_TUR\\CORE\\CORE.csproj",
       "projectName": "CORE",
-      "projectPath": "D:\\_yazilim\\ETS_TUR\\CORE\\CORE.csproj",
+      "projectPath": "D:\\_yazilim\\dotnet\\ets\\ETS_TUR\\CORE\\CORE.csproj",
       "packagesPath": "C:\\Users\\furka\\.nuget\\packages\\",
-      "outputPath": "D:\\_yazilim\\ETS_TUR\\CORE\\obj\\",
+      "outputPath": "D:\\_yazilim\\dotnet\\ets\\ETS_TUR\\CORE\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
