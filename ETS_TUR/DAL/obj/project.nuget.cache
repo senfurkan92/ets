@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oAXUIOTSX7H7RvpQJsWW0mMH75JgBLHx9nineG9VIctY/KiowQ2w74Jo8QDFveVeTX4m8RGnEl7xxaosZIwP0A==",
+  "dgSpecHash": "dYJ6c0yXDSudCK3KchsYuOdvInudlhswsP+ZL9B/CITPOcpRg5ovSVnMJrLCje00HHRtxP3/F1UKPrv+q8cHXQ==",
   "success": true,
   "projectFilePath": "D:\\_yazilim\\dotnet\\ets\\ETS_TUR\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.6\\microsoft.entityframeworkcore.analyzers.6.0.6.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.6\\microsoft.entityframeworkcore.design.6.0.6.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.6\\microsoft.entityframeworkcore.relational.6.0.6.nupkg.sha512",
+    "C:\\Users\\furka\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\6.0.6\\microsoft.entityframeworkcore.sqlite.6.0.6.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\6.0.6\\microsoft.entityframeworkcore.sqlite.core.6.0.6.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.6\\microsoft.entityframeworkcore.sqlserver.6.0.6.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.6\\microsoft.entityframeworkcore.tools.6.0.6.nupkg.sha512",
@@ -36,7 +37,10 @@
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\furka\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
+    "C:\\Users\\furka\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\furka\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.6\\sqlitepclraw.provider.e_sqlite3.2.0.6.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\furka\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
