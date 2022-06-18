@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sS6CRjM1jItL/3rXfW2OexbaxlNNnVFUyON+TIXWuEY=",
+  "Hash": "VWOMjkMeA9VJPR3hZlHmKGZm/3Nxk8lZgTvJbJuF6hg=",
   "Source": "WEB",
   "BasePath": "_content/WEB",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\_yazilim\\dotnet\\ets\\ETS_TUR\\WEB\\wwwroot\\db\\TextFile.txt",
+      "SourceId": "WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\_yazilim\\dotnet\\ets\\ETS_TUR\\WEB\\wwwroot\\",
+      "BasePath": "_content/WEB",
+      "RelativePath": "db/TextFile.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\db\\TextFile.txt"
     },
     {
       "Identity": "D:\\_yazilim\\dotnet\\ets\\ETS_TUR\\WEB\\wwwroot\\favicon.ico",

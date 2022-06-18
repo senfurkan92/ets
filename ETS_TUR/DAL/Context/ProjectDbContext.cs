@@ -17,7 +17,7 @@ namespace DAL.Context
             var path = System.IO.Directory.GetCurrentDirectory();
             var index = path.IndexOf("DAL");
             path = path.Substring(0, index-1);
-            path = Path.Combine(path,"WEB", "bin", "Release", "net6.0", "publish", "EtsProjectDB.db");
+            path = Path.Combine(path,"WEB", "bin", "Release", "net6.0", "publish", "wwwroot", "db", "EtsProjectDB.db");
             Console.WriteLine(path);
             var cstr = $"Data Source={path}";
             optionsBuilder.UseSqlite(cstr);
