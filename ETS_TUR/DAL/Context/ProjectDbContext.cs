@@ -1,6 +1,7 @@
 ﻿using DAL.Map;
 using DOMAIN.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,12 @@ namespace DAL.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var path = Directory.GetCurrentDirectory();
-            var cstr = $"Data Source={path}EtsProject.db";
+            var path = System.IO.Directory.GetCurrentDirectory();
+            var index = path.IndexOf("DAL");
+            path = path.Substring(0, index-1);
+            path = Path.Combine(path,"WEB", "bin", "Release", "net6.0", "publish", "EtsProjectDB.db");
+            Console.WriteLine(path);
+            var cstr = $"Data Source={path}";
             optionsBuilder.UseSqlite(cstr);
         }
 
