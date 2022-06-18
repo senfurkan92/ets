@@ -28,10 +28,10 @@ namespace CORE.Data
             try
             {
                 entity.InsertDate = DateTime.Now;
-                var result = await _ctx.AddAsync(entity);
+                var result = await _entities.AddAsync(entity);
                 return new ReturnModel<TEntity>
                 {
-                    Data = result.Entity,
+                    Result = result.Entity,
                     Success = await _ctx.SaveChangesAsync() > 0,
                 };
             }
@@ -49,10 +49,10 @@ namespace CORE.Data
         {
             try
             {
-                var result = _ctx.Update(entity);
+                var result = _entities.Update(entity);
                 return new ReturnModel<TEntity>
                 {
-                    Data = result.Entity,
+                    Result = result.Entity,
                     Success = await _ctx.SaveChangesAsync() > 0,
                 };
             }
@@ -70,11 +70,11 @@ namespace CORE.Data
         {
             try
             {
-                var result = _ctx.Remove(entity);
+                var result = _entities.Remove(entity);
                 var success = await _ctx.SaveChangesAsync() > 0;
                 return new ReturnModel<bool>
                 {
-                    Data = success,
+                    Result = success,
                     Success = success,
                 };
             }
@@ -90,7 +90,7 @@ namespace CORE.Data
 
         public async Task<ReturnModel<TEntity>> Read(Expression<Func<TEntity, bool>> filter, params string[] tables)
         {
-            var extended = _ctx as IQueryable<TEntity>;
+            var extended = _entities as IQueryable<TEntity>;
 
             if (tables is not null && tables.Length > 0)
             {
@@ -104,15 +104,15 @@ namespace CORE.Data
             return new ReturnModel<TEntity>
             {
                 Success = true,
-                Data = result
+                Result = result
             };
         }
 
         public async Task<ReturnModel<IQueryable<TEntity>>> ReadAll(Expression<Func<TEntity, bool>> filter = null, bool asc = true, string orderBy = "Id", int skip = 0, int take = 10, params string[] tables)
         {
-            var extended = _ctx as IQueryable<TEntity>;
+            var extended = _entities as IQueryable<TEntity>;
 
-            extended = extended?.Where(filter);
+            extended = filter is not null ? extended?.Where(filter) : extended;
             extended = CustomOrderBy(extended, asc, orderBy);
             extended = extended.Skip(skip);
             extended = extended.Take(take);
@@ -128,7 +128,7 @@ namespace CORE.Data
             return new ReturnModel<IQueryable<TEntity>>
             {
                 Success = true,
-                Data = extended
+                Result = extended
             };
         }
 

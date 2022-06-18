@@ -1,4 +1,5 @@
-﻿using CORE.Model;
+﻿using BLL.Model.Query;
+using CORE.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace BLL.Data.Service
 
         Task<ReturnModel<TEntity>> Update(TEntity entity);
 
-        Task<ReturnModel<bool>> Delete(TEntity entity);
+        Task<ReturnModel<bool>> Delete(int id);
 
         Task<ReturnModel<TEntity>> Read(Expression<Func<TEntity, bool>> filter, params string[] tables);
 

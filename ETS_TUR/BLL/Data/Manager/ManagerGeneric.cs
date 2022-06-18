@@ -22,12 +22,13 @@ namespace BLL.Data.Manager
             _dal = dal;
         }
 
-        public Task<ReturnModel<bool>> Delete(TEntity entity)
+        public async Task<ReturnModel<bool>> Delete(int id)
         {
-            return _dal.Delete(entity);
+            var entityQuery = await _dal.Read(x => x.Id == id);
+            return await _dal.Delete(entityQuery.Result);
         }
 
-        public Task<ReturnModel<TEntity>> Insert(TEntity entity)
+        public virtual Task<ReturnModel<TEntity>> Insert(TEntity entity)
         {
             return _dal.Insert(entity);
         }
@@ -42,7 +43,7 @@ namespace BLL.Data.Manager
             return _dal.ReadAll(filter, asc, orderBy, skip, take, tables);
         }
 
-        public Task<ReturnModel<TEntity>> Update(TEntity entity)
+        public virtual Task<ReturnModel<TEntity>> Update(TEntity entity)
         {
             return _dal.Update(entity);
         }

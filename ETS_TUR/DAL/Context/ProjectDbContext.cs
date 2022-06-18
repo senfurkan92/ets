@@ -15,10 +15,7 @@ namespace DAL.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var path = System.IO.Directory.GetCurrentDirectory();
-            var index = path.IndexOf("DAL");
-            path = path.Substring(0, index-1);
-            path = Path.Combine(path,"WEB", "bin", "Release", "net6.0", "publish", "wwwroot", "db", "EtsProjectDB.db");
-            Console.WriteLine(path);
+            path = Path.Combine(path, "bin", "Release", "net6.0", "publish", "wwwroot", "db", "EtsProjectDB.db");
             var cstr = $"Data Source={path}";
             optionsBuilder.UseSqlite(cstr);
         }
