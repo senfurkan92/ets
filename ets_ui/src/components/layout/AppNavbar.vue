@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar bg-base-100">
+  <div class="navbar bg-info">
     <div class="navbar-start">
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -26,42 +26,23 @@
             mt-3
             p-2
             shadow
-            bg-base-100
+            bg-info
             rounded-box
             w-52
           "
         >
-          <li><a>Item 1</a></li>
-          <li tabindex="0">
-            <a class="justify-between">
-              Parent
-              <svg
-                class="fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-                />
-              </svg>
-            </a>
-            <ul class="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </li>
-          <li><a>Item 3</a></li>
+          <li class="text-info-content"><a>Item 1</a></li>
+          <li class="text-info-content"><a>Item 2</a></li>
+          <li class="text-info-content"><a>Item 3</a></li>
         </ul>
       </div>
       <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0">
-        <li><a>Item 1</a></li>
-        <li><a>Item 2</a></li>
-        <li><a>Item 3</a></li>
+        <li class="text-info-content link-item"><a class="link-item">Tiyatro</a></li>
+        <li class="text-info-content link-item"><a class="link-item">Sinema</a></li>
+        <li class="text-info-content link-item"><a class="link-item">Gezi</a></li>
       </ul>
     </div>
     <div class="navbar-end">
@@ -70,7 +51,7 @@
         <input type="checkbox" @change="changeTheme" :checked="$store.state.theme === 'winter'"/>
         <!-- sun icon -->
         <svg
-          class="swap-on fill-current w-10 h-10"
+          class="swap-on fill-current w-10 h-10 text-base-100"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -82,7 +63,7 @@
 
         <!-- moon icon -->
         <svg
-          class="swap-off fill-current w-10 h-10"
+          class="swap-off fill-current w-10 h-10 text-base-100"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -105,5 +86,49 @@ const changeTheme = (e) => {
   const day = e.target.checked;
   store.commit('changeTheme', day ? 'winter' : 'night');
 };
-
 </script>
+
+<style scoped>
+.link-item {
+  background: transparent;
+}
+
+.link-item:hover {
+  font-weight: 500;
+}
+
+.link-item::before {
+  content: "";
+  width: 0;
+  transform: rotateZ(-120deg);
+  height: 1.5px;
+  background: black;
+  position: absolute;
+  top: 44px;
+  left: 7px;
+  transition: 0.3s;
+  transform-origin: left;
+}
+
+.link-item:hover::before {
+  width: 35px;
+  transform: rotateZ(-80deg);
+}
+
+.link-item::after {
+  content: "";
+  width: 100%;
+  transform: scale(0, 0) rotateZ(0);
+  height: 1.5px;
+  background: black;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  transition: 0.3s;
+  transform-origin: right;
+}
+
+.link-item:hover::after {
+  transform: scale(1, 1) rotateZ(-2deg);
+}
+</style>
