@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Layout>
+    <template #header>
+      <header>
+        <AppHeader/>
+      </header>
+    </template>
+    <template #main>
+      <main>Main</main>
+    </template>
+    <template #footer>
+      <AppFooter/>
+    </template>
+  </Layout>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue';
+<script setup>
+import Layout from '@/components/layout/AppLayout.vue';
+import AppHeader from '@/components/layout/AppNavbar.vue';
+import AppFooter from '@/components/layout/AppFooter.vue';
+import { useStore } from 'vuex';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
-};
+const store = useStore();
+store.commit('init');
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*{
+  padding: 0;
+  margin: 0;
 }
 </style>
