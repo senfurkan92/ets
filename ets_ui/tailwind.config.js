@@ -9,6 +9,9 @@ module.exports = {
         navigation: ['Bebas Neue'],
         title: ['Anton'],
       },
+      aspectRatio: {
+        '5/7': '5 / 7',
+      },
     },
   },
   plugins: [
