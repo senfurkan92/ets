@@ -137,10 +137,11 @@
       <!-- START DATE -->
       <div>
         <label for="startDate-input" class="font-bold">
-          Start Date *:
+          Start Date (YYYY-MM-DD HH:MM)*:
         </label>
         <input
             v-model="v$.startDate.$model"
+            v-maska="{mask: '####-##-## ##:##'}"
             id="startDate-input"
             type="datetime"
             placeholder="Start Date"
@@ -150,20 +151,29 @@
           <span class="text-error" v-if="v$.startDate.required.$invalid">
             {{v$.startDate.required.$message}}
           </span>
+          <span class="text-error" v-else-if="v$.startDate.date.$invalid">
+            Invalid date
+          </span>
         </div>
       </div>
       <!-- END DATE -->
       <div>
         <label for="endDate-input" class="font-bold">
-          End Date:
+          End Date (YYYY-MM-DD HH:MM):
         </label>
         <input
             v-model="v$.endDate.$model"
+            v-maska="{mask: '####-##-## ##:##'}"
             id="endDate-input"
             type="datetime"
             placeholder="End Date"
             class="input input-bordered w-full mb-4"
           />
+        <div v-if="v$.endDate.$dirty">
+          <span class="text-error" v-if="v$.endDate.date.$invalid">
+            Invalid date
+          </span>
+        </div>
       </div>
       <!-- POSTER -->
       <div>
@@ -174,6 +184,7 @@
             id="poster-input"
             type="file"
             class="input input-bordered w-full mb-4"
+            ref="posterFile"
           />
       </div>
        <!-- IMAGES -->
@@ -186,11 +197,59 @@
             type="file"
             class="input input-bordered w-full mb-4"
             multiple
+            ref="imagesFile"
           />
+      </div>
+      <!-- TICKETS -->
+      <div>
+        <label for="images-input" class="font-bold">
+          TICKETS:
+        </label>
+        <template v-for="ticket, index in tickets" :key="index">
+            <div class="grid" style="grid-template-columns: auto max-content">
+                <div class="grid grid-cols-2">
+                    <div>
+                        <input
+                            v-model="ticket.title"
+                            type="text"
+                            :placeholder="`${index+1}. Ticket's Title`"
+                            class="input input-bordered w-full mb-4"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            v-model="ticket.fee"
+                            type="number"
+                            step="0.01"
+                            :placeholder="`${index+1}. Ticket's Fee`"
+                            class="input input-bordered w-full mb-4"
+                            min="0"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <button
+                        type="button"
+                        class="btn btn-error"
+                        @click="tickets.splice(index,1)"
+                    >
+                        -
+                    </button>
+                </div>
+            </div>
+        </template>
+        <button class="btn btn-primary" type="button"
+          @click="tickets.push({
+            title: '',
+            fee: '',
+          })"
+        >
+            Add Ticket
+        </button>
       </div>
       <!-- ADD BUTTON -->
       <div class="text-right">
-        <button class="btn btn-success" :disabled="v$.$invalid">
+        <button class="btn btn-success">
             Add
         </button>
       </div>
@@ -199,9 +258,23 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import useVuelidate from '@vuelidate/core';
-import { required, maxLength, url } from '@vuelidate/validators';
+import {
+  required,
+  maxLength,
+  url,
+  helpers,
+} from '@vuelidate/validators';
+
+const posterFile = ref(null);
+const imagesFile = ref(null);
+const tickets = reactive([
+  {
+    title: '',
+    fee: '',
+  },
+]);
 
 const form = reactive({
   title: '',
@@ -214,6 +287,8 @@ const form = reactive({
   endDate: '',
   categoryId: '',
 });
+
+const date = helpers.regex(/[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/);
 
 const rules = {
   title: {
@@ -238,8 +313,10 @@ const rules = {
   },
   startDate: {
     required,
+    date,
   },
   endDate: {
+    date,
   },
   categoryId: {
     required,
@@ -249,6 +326,20 @@ const rules = {
 const v$ = useVuelidate(rules, form);
 
 const submit = () => {
-  console.log(v$.value);
+  const payload = {
+    title: v$.value.title.$model,
+    description: v$.value.description.$model,
+    city: v$.value.city.$model,
+    placeTitle: v$.value.placeTitle.$model,
+    mapLocation: v$.value.mapLocation.$model,
+    address: v$.value.address.$model,
+    startDate: new Date(v$.value.startDate.$model),
+    endDate: v$.value.endDate.$model ? new Date(v$.value.endDate.$model) : null,
+    categoryId: v$.value.categoryId.$model,
+    posterFile: posterFile.value.files[0],
+    imagesFile: imagesFile.value.files,
+    tickets,
+  };
+  console.log(payload);
 };
 </script>

@@ -49,6 +49,9 @@ const rules = {
 const v$ = useVuelidate(rules, form);
 
 const submit = () => {
-  console.log(v$.value.title.$model);
+  const payload = {
+    name: v$.value.title.$model,
+  };
+  console.log(payload);
 };
 </script>
