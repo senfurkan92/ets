@@ -4,7 +4,12 @@ module.exports = {
     './src/**/*.{vue,js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        navigation: ['Bebas Neue'],
+        title: ['Anton'],
+      },
+    },
   },
   plugins: [
     // eslint-disable-next-line global-require

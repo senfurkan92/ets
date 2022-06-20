@@ -1,8 +1,8 @@
 <template>
   <div class="navbar bg-info">
     <div class="navbar-start">
-      <div class="dropdown">
-        <label tabindex="0" class="btn btn-ghost lg:hidden">
+      <div class="dropdown mr-5">
+        <label tabindex="0" class="btn lg:hidden bg-info-content border-0 hover:bg-base-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
@@ -36,13 +36,45 @@
           <li class="text-info-content"><a>Item 3</a></li>
         </ul>
       </div>
-      <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+      <router-link to="/" class="normal-case text-xl text-info-content">
+        <img src="/ets-logo.png" alt="logo" class="md:h-12 h-10 img-logo"/>
+      </router-link>
     </div>
     <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal p-0">
-        <li class="text-info-content link-item"><a class="link-item">Tiyatro</a></li>
-        <li class="text-info-content link-item"><a class="link-item">Sinema</a></li>
-        <li class="text-info-content link-item"><a class="link-item">Gezi</a></li>
+      <ul class="menu menu-horizontal p-0 font-navigation tracking-widest">
+        <li class="text-info-content mx-2">
+          <router-link :to="{
+            name: 'Category',
+            params: {
+              categoryName: 'Tiyatro',
+              categoryId: 1,
+            }
+          }" class="link-item">
+            Tiyatro
+          </router-link>
+        </li>
+        <li class="text-info-content mx-2">
+          <router-link :to="{
+            name: 'Category',
+            params: {
+              categoryName: 'Sinema',
+              categoryId: 2,
+            }
+          }" class="link-item">
+            Sinema
+          </router-link>
+        </li>
+        <li class="text-info-content mx-2">
+          <router-link :to="{
+            name: 'Category',
+            params: {
+              categoryName: 'Gezi',
+              categoryId: 3,
+            }
+          }" class="link-item">
+            Gezi
+          </router-link>
+        </li>
       </ul>
     </div>
     <div class="navbar-end">
@@ -51,7 +83,7 @@
         <input type="checkbox" @change="changeTheme" :checked="$store.state.theme === 'winter'"/>
         <!-- sun icon -->
         <svg
-          class="swap-on fill-current w-10 h-10 text-base-100"
+          class="swap-on fill-current w-10 h-10 text-info-content"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -63,7 +95,7 @@
 
         <!-- moon icon -->
         <svg
-          class="swap-off fill-current w-10 h-10 text-base-100"
+          class="swap-off fill-current w-10 h-10 text-info-content"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -91,10 +123,12 @@ const changeTheme = (e) => {
 <style scoped>
 .link-item {
   background: transparent;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .link-item:hover {
-  font-weight: 500;
+  font-weight: 900;
 }
 
 .link-item::before {

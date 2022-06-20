@@ -6,8 +6,8 @@
       </header>
     </template>
     <template #main>
-      <main>
-        <HomeSlider/>
+      <main class="container mx-auto md:py-10 py-5">
+        <router-view/>
       </main>
     </template>
     <template #footer>
@@ -22,7 +22,6 @@
 import Layout from '@/components/layout/AppLayout.vue';
 import AppHeader from '@/components/layout/AppNavbar.vue';
 import AppFooter from '@/components/layout/AppFooter.vue';
-import HomeSlider from '@/components/ui/Home2Slider.vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
