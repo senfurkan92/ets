@@ -1,5 +1,5 @@
 <template>
-  <div class="body shadow-sm">
+  <div class="body shadow-sm bg-gradient-to-b from-base-100 via-base-100 to-base-300">
     <swiper
       :slidesPerView="1"
       :spaceBetween="10"
@@ -21,7 +21,7 @@
         },
       }"
       :modules="modules"
-      class="mySwiper "
+      class="mySwiper"
     >
       <swiper-slide v-for="n in 9" :key="n" class="shadow-lg hover:scale-105">
         <router-link :to="{

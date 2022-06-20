@@ -16,4 +16,9 @@ export default [
     component: () => import('../views/ActivityView.vue'),
     name: 'Activity',
   },
+  {
+    path: '/admin',
+    component: () => import('../views/AdminView.vue'),
+    name: 'Admin',
+  },
 ];

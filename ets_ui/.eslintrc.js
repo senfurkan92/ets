@@ -16,5 +16,6 @@ module.exports = {
     'vuejs-accessibility/label-has-for': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'vuejs-accessibility/anchor-has-content': 'off',
+    'vuejs-accessibility/click-events-have-key-events': 'off',
   },
 };

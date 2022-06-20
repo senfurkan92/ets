@@ -2,7 +2,10 @@
   <div class="card card-side bg-base-100 border border-base-300 hover:shadow-2xl h-full
     hover:bg-base-200">
     <figure>
-      <img src="https://api.lorem.space/image/movie?w=200&h=280" alt="Movie" />
+      <img
+        src="https://api.lorem.space/image/movie?w=200&h=280"
+        alt="Movie"
+      />
     </figure>
     <div class="card-body">
       <h2 class="card-title">New movie is released!</h2>
