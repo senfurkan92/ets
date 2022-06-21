@@ -1,0 +1,7 @@
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\PubTmp\Out\WEB.exe
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\PubTmp\Out\appsettings.json
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\PubTmp\Out\WEB.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\PubTmp\Out\WEB.deps.json
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\PubTmp\Out\WEB.runtimeconfig.json
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\PubTmp\Out\WEB.pdb
