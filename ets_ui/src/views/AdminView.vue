@@ -2,13 +2,11 @@
   <div>
     <div class="tabs flex justify-center mb-6">
         <a class="tab tab-lg tab-bordered"
-          :class="{'tab-active': currentTab.__file.includes('CategoryTable')}"
           @click="changeTab('categories')"
         >
             Categories
         </a>
         <a class="tab tab-lg tab-bordered"
-        :class="{'tab-active': currentTab.__file.includes('ActivityTable')}"
           @click="changeTab('activities')"
         >
             Activities
