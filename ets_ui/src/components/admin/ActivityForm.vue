@@ -180,12 +180,20 @@
         <label for="poster-input" class="font-bold">
           Poster:
         </label>
-        <input
-            id="poster-input"
-            type="file"
-            class="input input-bordered w-full mb-4"
-            ref="posterFile"
-          />
+        <div class="grid grid-cols-1">
+          <div>
+            <input
+              id="poster-input"
+              type="file"
+              class="input input-bordered w-full mb-4"
+              ref="posterFile"
+              @change="preview"
+            />
+          </div>
+          <div v-if="imgUrl" class="h-40 aspect-5/7">
+            <img :src="imgUrl" alt="" class="h-full w-full object-contain"/>
+          </div>
+        </div>
       </div>
        <!-- IMAGES -->
       <div>
@@ -231,7 +239,7 @@
                     <button
                         type="button"
                         class="btn btn-error"
-                        @click="tickets.splice(index,1)"
+                        @click.prevent.stop="tickets.splice(index,1)"
                     >
                         -
                     </button>
@@ -239,7 +247,7 @@
             </div>
         </template>
         <button class="btn btn-primary" type="button"
-          @click="tickets.push({
+          @click.prevent.stop="tickets.push({
             title: '',
             fee: '',
           })"
@@ -249,7 +257,7 @@
       </div>
       <!-- ADD BUTTON -->
       <div class="text-right">
-        <button class="btn btn-success">
+        <button class="btn btn-success" :disabled="v$.$invalid">
             Add
         </button>
       </div>
@@ -267,7 +275,18 @@ import {
   helpers,
 } from '@vuelidate/validators';
 
+const imgUrl = ref(null);
 const posterFile = ref(null);
+
+const preview = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    imgUrl.value = URL.createObjectURL(file);
+  } else {
+    imgUrl.value = null;
+  }
+};
+
 const imagesFile = ref(null);
 const tickets = reactive([
   {
@@ -340,6 +359,19 @@ const submit = () => {
     imagesFile: imagesFile.value.files,
     tickets,
   };
-  console.log(payload);
+
+  const formData = new FormData();
+  formData.append('title', payload.title);
+  formData.append('description', payload.description);
+  formData.append('city', payload.city);
+  formData.append('placeTitle', payload.placeTitle);
+  formData.append('address', payload.address);
+  formData.append('startDate', payload.startDate);
+  formData.append('endDate', payload.endDate);
+  formData.append('categoryId', payload.categoryId);
+  formData.append('posterFile', payload.posterFile);
+  formData.append('imagesFile', payload.imagesFile);
+  formData.append('tickets', payload.tickets);
+  console.log(formData);
 };
 </script>
