@@ -110,12 +110,14 @@ namespace CORE.Data
 
         public async Task<ReturnModel<IQueryable<TEntity>>> ReadAll(Expression<Func<TEntity, bool>> filter = null, bool asc = true, string orderBy = "Id", int skip = 0, int take = 10, params string[] tables)
         {
+            orderBy = orderBy ?? "Id";
+
             var extended = _entities as IQueryable<TEntity>;
 
             extended = filter is not null ? extended?.Where(filter) : extended;
             extended = CustomOrderBy(extended, asc, orderBy);
             extended = extended.Skip(skip);
-            extended = extended.Take(take);
+            extended = take > 0 ? extended.Take(take) : extended;
 
             if (tables is not null && tables.Length > 0)
             {

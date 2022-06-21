@@ -38,7 +38,7 @@ namespace BLL.Data.Manager
             return _dal.Read(filter, tables);
         }
 
-        public Task<ReturnModel<IQueryable<TEntity>>> ReadAll(Expression<Func<TEntity, bool>> filter = null, bool asc = true, string orderBy = "Id", int skip = 0, int take = 10, params string[] tables)
+        public Task<ReturnModel<IQueryable<TEntity>>> ReadAll(Expression<Func<TEntity, bool>> filter = null, bool asc = true, string orderBy = "Id", int skip = 0, int take = -1, params string[] tables)
         {
             return _dal.ReadAll(filter, asc, orderBy, skip, take, tables);
         }

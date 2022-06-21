@@ -31,9 +31,34 @@
             w-52
           "
         >
-          <li class="text-info-content"><a>Item 1</a></li>
-          <li class="text-info-content"><a>Item 2</a></li>
-          <li class="text-info-content"><a>Item 3</a></li>
+          <li v-for="category in $store.state.category.list"
+            :key="category.id"
+            class="text-info-content">
+              <router-link :to="{
+                name: 'Category',
+                params: {
+                  categoryName: category.name,
+                  categoryId: category.id,
+                }
+              }" class="link-item font-navigation tracking-wider">
+                {{category.name}}
+              </router-link>
+          </li>
+          <li class="text-info-content">
+            <router-link :to="{
+              name: 'PastActivities',
+            }" class="link-item font-navigation tracking-wider">
+              Geçmiş
+            </router-link>
+          </li>
+          <li class="text-info-content">
+            <router-link :to="{
+              name: 'Admin',
+            }" class="link-item font-navigation tracking-wider">
+              Admin
+            </router-link>
+          </li>
+          <SearchBar/>
         </ul>
       </div>
       <router-link to="/" class="normal-case text-xl text-info-content">
@@ -42,42 +67,38 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0 font-navigation tracking-widest">
-        <li class="text-info-content mx-2">
+        <li v-for="category in $store.state.category.list" :key="category.id"
+          class="text-info-content mx-2">
           <router-link :to="{
             name: 'Category',
             params: {
-              categoryName: 'Tiyatro',
-              categoryId: 1,
+              categoryName: category.name,
+              categoryId: category.id,
             }
           }" class="link-item">
-            Tiyatro
+            {{category.name}}
           </router-link>
         </li>
         <li class="text-info-content mx-2">
           <router-link :to="{
-            name: 'Category',
-            params: {
-              categoryName: 'Sinema',
-              categoryId: 2,
-            }
+            name: 'PastActivities',
           }" class="link-item">
-            Sinema
+            Geçmiş
           </router-link>
         </li>
         <li class="text-info-content mx-2">
           <router-link :to="{
-            name: 'Category',
-            params: {
-              categoryName: 'Gezi',
-              categoryId: 3,
-            }
+            name: 'Admin',
           }" class="link-item">
-            Gezi
+            Admin
           </router-link>
         </li>
       </ul>
     </div>
     <div class="navbar-end">
+      <div class="md:block hidden">
+        <SearchBar/>
+      </div>
       <label class="swap swap-rotate">
         <!-- this hidden checkbox controls the state -->
         <input type="checkbox" @change="changeTheme" :checked="$store.state.theme === 'winter'"/>
@@ -111,6 +132,7 @@
 
 <script setup>
 import { useStore } from 'vuex';
+import SearchBar from '@/components/ui/SearchBar.vue';
 
 const store = useStore();
 

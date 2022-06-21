@@ -16,48 +16,16 @@
       :modules="modules"
       class="mySwiper"
     >
-      <swiper-slide
+      <swiper-slide v-for="image in props.images" :key="image.id"
         ><img class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-1.jpg"
-          alt="" /></swiper-slide
-      ><swiper-slide
-        ><img class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-2.jpg"
-          alt="" /></swiper-slide
-      ><swiper-slide
-        ><img class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-3.jpg"
-          alt="" /></swiper-slide
-      ><swiper-slide
-        ><img class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-4.jpg"
-          alt="" /></swiper-slide
-      ><swiper-slide
-        ><img class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-5.jpg"
-          alt="" /></swiper-slide
-      ><swiper-slide
-        ><img class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-6.jpg"
-          alt="" /></swiper-slide
-      ><swiper-slide
-        ><img class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-7.jpg"
-          alt="" /></swiper-slide
-      ><swiper-slide
-        ><img class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-8.jpg"
-          alt="" /></swiper-slide
-      ><swiper-slide
-        ><img  class="h-full w-full object-contain"
-          src="https://swiperjs.com/demos/images/nature-9.jpg"
-          alt=""
-      /></swiper-slide>
+          :src="image.path"
+          alt="" />
+      </swiper-slide>
     </swiper>
   </div>
 </template>
 
-<script>
+<script setup>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -74,17 +42,13 @@ import 'swiper/css/pagination';
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper';
 
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
+const props = defineProps({
+  images: {
+    type: Array,
   },
-  setup() {
-    return {
-      modules: [EffectCoverflow, Pagination],
-    };
-  },
-};
+});
+
+const modules = [EffectCoverflow, Pagination];
 </script>
 
 <style>

@@ -11,7 +11,12 @@
             id="category-input"
             class="input input-bordered w-full mb-4"
         >
-            <option :value="1">Tiyatro</option>
+            <option v-for="category in $store.state.category.list"
+              :key="category.id"
+              :value="category.id"
+            >
+              {{category.name}}
+            </option>
         </select>
         <div v-if="v$.categoryId.$dirty">
           <span class="text-error" v-if="v$.categoryId.$invalid">
@@ -156,25 +161,6 @@
           </span>
         </div>
       </div>
-      <!-- END DATE -->
-      <div>
-        <label for="endDate-input" class="font-bold">
-          End Date (YYYY-MM-DD HH:MM):
-        </label>
-        <input
-            v-model="v$.endDate.$model"
-            v-maska="{mask: '####-##-## ##:##'}"
-            id="endDate-input"
-            type="datetime"
-            placeholder="End Date"
-            class="input input-bordered w-full mb-4"
-          />
-        <div v-if="v$.endDate.$dirty">
-          <span class="text-error" v-if="v$.endDate.date.$invalid">
-            Invalid date
-          </span>
-        </div>
-      </div>
       <!-- POSTER -->
       <div>
         <label for="poster-input" class="font-bold">
@@ -205,7 +191,7 @@
             type="file"
             class="input input-bordered w-full mb-4"
             multiple
-            ref="imagesFile"
+            ref="imageFiles"
           />
       </div>
       <!-- TICKETS -->
@@ -274,6 +260,9 @@ import {
   url,
   helpers,
 } from '@vuelidate/validators';
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const imgUrl = ref(null);
 const posterFile = ref(null);
@@ -287,24 +276,23 @@ const preview = (e) => {
   }
 };
 
-const imagesFile = ref(null);
+const imageFiles = ref(null);
 const tickets = reactive([
   {
-    title: '',
-    fee: '',
+    title: 'standart',
+    fee: 100,
   },
 ]);
 
 const form = reactive({
-  title: '',
-  description: '',
-  city: '',
-  placeTitle: '',
-  mapLocation: '',
-  address: '',
-  startDate: '',
-  endDate: '',
-  categoryId: '',
+  title: 'title',
+  description: 'description',
+  city: 'city',
+  placeTitle: 'placeTitle',
+  mapLocation: 'https://www.flaticon.com/',
+  address: 'address',
+  startDate: '2022-12-20 22:33',
+  categoryId: '4',
 });
 
 const date = helpers.regex(/[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/);
@@ -334,9 +322,6 @@ const rules = {
     required,
     date,
   },
-  endDate: {
-    date,
-  },
   categoryId: {
     required,
   },
@@ -352,11 +337,10 @@ const submit = () => {
     placeTitle: v$.value.placeTitle.$model,
     mapLocation: v$.value.mapLocation.$model,
     address: v$.value.address.$model,
-    startDate: new Date(v$.value.startDate.$model),
-    endDate: v$.value.endDate.$model ? new Date(v$.value.endDate.$model) : null,
+    startDate: v$.value.startDate.$model,
     categoryId: v$.value.categoryId.$model,
     posterFile: posterFile.value.files[0],
-    imagesFile: imagesFile.value.files,
+    imageFiles: imageFiles.value.files,
     tickets,
   };
 
@@ -365,13 +349,33 @@ const submit = () => {
   formData.append('description', payload.description);
   formData.append('city', payload.city);
   formData.append('placeTitle', payload.placeTitle);
+  formData.append('mapLocation', payload.mapLocation);
   formData.append('address', payload.address);
   formData.append('startDate', payload.startDate);
-  formData.append('endDate', payload.endDate);
   formData.append('categoryId', payload.categoryId);
   formData.append('posterFile', payload.posterFile);
-  formData.append('imagesFile', payload.imagesFile);
-  formData.append('tickets', payload.tickets);
-  console.log(formData);
+
+  if (payload.imageFiles) {
+    Array.from(payload.imageFiles).forEach((file) => {
+      formData.append('imageFiles', file);
+    });
+  }
+
+  if (payload.tickets && payload.tickets.length > 0) {
+    payload.tickets.forEach((ticket, index) => {
+      formData.append(`Tickets[${index}].Title`, ticket.title);
+      formData.append(`Tickets[${index}].Fee`, ticket.fee);
+    });
+  }
+
+  store.dispatch('activity/insertItem', formData)
+    .then((resp) => {
+      if (resp) {
+        alert('Success');
+        store.dispatch('activity/fetchList');
+      } else {
+        alert('Failed');
+      }
+    });
 };
 </script>

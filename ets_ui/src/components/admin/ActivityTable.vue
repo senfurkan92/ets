@@ -10,45 +10,32 @@
         <thead>
           <tr>
             <th>Title</th>
+            <th>Category</th>
             <th>Start Date</th>
-            <th>End Date</th>
             <th>Poster</th>
             <th class="text-center">#</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Tarkan</td>
-            <td>6/20/2022 12:30pm</td>
-            <td>8/20/2022 12:30pm</td>
+          <tr v-for="activity in $store.state.activity.list"
+            :key="activity.id"
+          >
+            <td>{{activity.title}}</td>
+            <td>{{$store.state.category.list.find((x) => x.id == activity.categoryId).name}}</td>
+            <td>{{activity.startDate.replace('T', ' ')}}</td>
             <td>
               <div class="h-40 aspect-[5/7]">
                 <img
                   class="h-full w-full object-contain"
-                  src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a944da54063079.594ce3e22a882.jpg"
+                  :src="activity.posterPath"
                   alt=""
                 />
               </div>
             </td>
             <td class="text-center">
-              <button class="btn btn-error">-</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Tarkan</td>
-            <td>6/20/2022 12:30pm</td>
-            <td>8/20/2022 12:30pm</td>
-            <td>
-              <div class="h-40 aspect-[5/7]">
-                <img
-                  class="h-full w-full object-contain"
-                  src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a944da54063079.594ce3e22a882.jpg"
-                  alt=""
-                />
-              </div>
-            </td>
-            <td class="text-center">
-              <button class="btn btn-error">-</button>
+              <button class="btn btn-error"
+                @click="remove(activity.id)"
+              >-</button>
             </td>
           </tr>
         </tbody>
@@ -60,4 +47,16 @@
 <script setup>
 import ModalBox from '@/components/ui/ModalBox.vue';
 import ActivityForm from '@/components/admin/ActivityForm.vue';
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+onMounted(() => {
+  store.dispatch('activity/fetchList');
+});
+
+const remove = (id) => {
+  store.dispatch('activity/deleteItem', id);
+};
 </script>

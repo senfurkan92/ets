@@ -16,7 +16,7 @@ namespace DAL.Context
         {
             var path = System.IO.Directory.GetCurrentDirectory();
             path = Path.Combine(path, "bin", "Release", "net6.0", "publish", "wwwroot", "db", "EtsProjectDB.db");
-            var cstr = $"Data Source={path}";
+            var cstr = $"Data Source=C:\\SqliteDBs\\test.db";
             optionsBuilder.UseSqlite(cstr);
         }
 

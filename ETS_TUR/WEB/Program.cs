@@ -5,6 +5,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddDi();
+builder.Services.AddCors(config => {
+    config.AddPolicy(
+        name: "FullAllow", builder =>
+        {
+            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        });
+});
 
 var app = builder.Build();
 
@@ -17,8 +24,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.UseRouting();
+app.UseCors();
+
 
 app.UseEndpoints(endpoints =>
 {

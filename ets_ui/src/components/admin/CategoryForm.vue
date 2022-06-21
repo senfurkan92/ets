@@ -34,6 +34,9 @@
 import { reactive } from 'vue';
 import useVuelidate from '@vuelidate/core';
 import { required, maxLength } from '@vuelidate/validators';
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const form = reactive({
   title: '',
@@ -52,6 +55,13 @@ const submit = () => {
   const payload = {
     name: v$.value.title.$model,
   };
-  console.log(payload);
+  store.dispatch('category/insertItem', payload)
+    .then((resp) => {
+      if (resp) {
+        alert('Success');
+      } else {
+        alert('Failed');
+      }
+    });
 };
 </script>

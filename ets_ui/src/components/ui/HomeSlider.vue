@@ -7,37 +7,46 @@
         clickable: true,
       }"
       :breakpoints="{
-        '640': {
+        '500': {
           slidesPerView: 2,
           spaceBetween: 20,
         },
         '768': {
-          slidesPerView: 4,
+          slidesPerView: 3,
           spaceBetween: 40,
         },
         '1024': {
-          slidesPerView: 5,
+          slidesPerView: 4,
           spaceBetween: 50,
         },
       }"
       :modules="modules"
       class="mySwiper"
     >
-      <swiper-slide v-for="n in 9" :key="n" class="shadow-lg hover:scale-105">
+      <swiper-slide v-for="activity in $store.state.activity.recentList"
+        :key="activity.id"
+        class="shadow-lg hover:scale-x-105 relative">
         <router-link :to="{
             name: 'Activity',
             params: {
-              categoryName: 'tiyatro',
-              categoryId: 1,
-              activityName: 'Tarkan Konser',
-              activityId: 1
+              categoryName: activity.category.name,
+              categoryId: activity.categoryId,
+              activityName: activity.title,
+              activityId: activity.id
             }
           }">
-          <img class="h-full w-full object-contain"
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a944da54063079.594ce3e22a882.jpg"
-            alt=""
-          />
+          <div class="w-full relative" style="height: 50vh">
+            <img class="h-full w-full object-contain"
+              :src="activity.posterPath || '/img/standart.png'"
+              alt=""
+            />
+          </div>
         </router-link>
+        <div class="text-black z-40 absolute bottom-0 text-2xl
+              text-center w-full bg-warning pt-2 pb-5 px-1 font-bold
+              font-navigation">
+              {{activity.title}}
+            </div>
       </swiper-slide>
     </swiper>
   </div>

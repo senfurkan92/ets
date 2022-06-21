@@ -1,0 +1,15 @@
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\bin\Release\net6.0\DOMAIN.deps.json
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\bin\Release\net6.0\DOMAIN.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\bin\Release\net6.0\DOMAIN.pdb
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\bin\Release\net6.0\CORE.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\bin\Release\net6.0\CORE.pdb
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\DOMAIN.csproj.AssemblyReference.cache
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\DOMAIN.GeneratedMSBuildEditorConfig.editorconfig
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\DOMAIN.AssemblyInfoInputs.cache
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\DOMAIN.AssemblyInfo.cs
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\DOMAIN.csproj.CoreCompileInputs.cache
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\DOMAIN.csproj.CopyComplete
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\DOMAIN.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\refint\DOMAIN.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\DOMAIN.pdb
+D:\_yazilim\dotnet\ets\ETS_TUR\DOMAIN\obj\Release\net6.0\ref\DOMAIN.dll

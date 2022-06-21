@@ -1,10 +1,12 @@
 ﻿using BLL.Data.Service;
 using BLL.Model.Query;
 using DOMAIN.Entities;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WEB.Controllers
 {
+    [EnableCors("FullAllow")]
     public class CategoriesController : ApiController
     {
         private readonly IServiceCategory _managerCategory;
@@ -24,7 +26,7 @@ namespace WEB.Controllers
 
         [HttpGet]
         [Route("/Categories/{id}")]
-        public async Task<IActionResult> ReadAll(int id)
+        public async Task<IActionResult> Read(int id)
         {
             var query = await _managerCategory.Read(x=> x.Id == id);
             return Ok(GetProperResponse(query));
@@ -54,8 +56,8 @@ namespace WEB.Controllers
             return Ok(GetProperResponse(query));
         }
 
-        [HttpDelete]
-        [Route("/Categories/{id}")]
+        [HttpGet]
+        [Route("/Categories/Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var query = await _managerCategory.Delete(id);

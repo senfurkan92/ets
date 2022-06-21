@@ -46,25 +46,32 @@ namespace BLL.Data.Manager
             var projectRoot = Directory.GetCurrentDirectory();
             var posterUnique = Guid.NewGuid().ToString().Split("-")[1];
 
+            string posterPath = null;
+
             // upload poster
-            var posterExt = dto.PosterFile.FileName.Split(".").ToList().LastOrDefault();
-            var posterUploadPath = Path.Combine(projectRoot, "wwwroot", "assets", "images", "activities", "posters", $"{posterUnique}.{posterExt}");
-            var fsPoster = new FileStream(posterUploadPath, FileMode.Create);
-            await dto.PosterFile.CopyToAsync(fsPoster);
-            fsPoster.Close();
-            var posterPath = $"/assets/images/activities/posters/{posterUnique}.{posterExt}";
+            if (dto.PosterFile is not null)
+            {
+                var posterExt = dto.PosterFile.FileName.Split(".").ToList().LastOrDefault();
+                var posterUploadPath = Path.Combine(projectRoot, "wwwroot", "assets", "images", "activities", "posters", $"{posterUnique}.{posterExt}");
+                var fsPoster = new FileStream(posterUploadPath, FileMode.Create);
+                await dto.PosterFile.CopyToAsync(fsPoster);
+                fsPoster.Close();
+                posterPath = $"/assets/images/activities/posters/{posterUnique}.{posterExt}";
+            }
 
             // upload images
             var imagePaths = new List<string>();
-            foreach (var file in dto.ImageFiles)
-            {
-                var imageUnique = Guid.NewGuid().ToString().Split("-")[1];
-                var imageExt = file.FileName.Split(".").ToList().LastOrDefault();
-                var fileUploadPath = Path.Combine(projectRoot, "wwwroot", "assets", "images", "activities", "sliders", $"{imageUnique}.{imageExt}");
-                var fsImage = new FileStream(fileUploadPath, FileMode.Create);
-                await file.CopyToAsync(fsImage);
-                fsImage.Close();
-                imagePaths.Add($"/assets/images/activities/sliders/{imageUnique}.{imageExt}");
+            if (dto.ImageFiles is not null) { 
+                foreach (var file in dto.ImageFiles)
+                {
+                    var imageUnique = Guid.NewGuid().ToString().Split("-")[1];
+                    var imageExt = file.FileName.Split(".").ToList().LastOrDefault();
+                    var fileUploadPath = Path.Combine(projectRoot, "wwwroot", "assets", "images", "activities", "sliders", $"{imageUnique}.{imageExt}");
+                    var fsImage = new FileStream(fileUploadPath, FileMode.Create);
+                    await file.CopyToAsync(fsImage);
+                    fsImage.Close();
+                    imagePaths.Add($"/assets/images/activities/sliders/{imageUnique}.{imageExt}");
+                }
             }
 
             // generate images

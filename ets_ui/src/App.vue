@@ -22,10 +22,15 @@
 import Layout from '@/components/layout/AppLayout.vue';
 import AppHeader from '@/components/layout/AppNavbar.vue';
 import AppFooter from '@/components/layout/AppFooter.vue';
+import { onMounted } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-store.commit('init');
+
+onMounted(() => {
+  store.commit('init');
+  store.dispatch('category/fetchList');
+});
 </script>
 
 <style>

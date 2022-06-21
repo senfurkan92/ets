@@ -14,10 +14,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Tarkan</td>
+          <tr v-for="category in $store.state.category.list" :key="category.id">
+            <td>{{category.name}}</td>
             <td class="text-center">
-              <button class="btn btn-error">-</button>
+              <button class="btn btn-error" @click="remove(category.id)">
+                -
+              </button>
             </td>
           </tr>
         </tbody>
@@ -29,4 +31,11 @@
 <script setup>
 import ModalBox from '@/components/ui/ModalBox.vue';
 import CategoryForm from '@/components/admin/CategoryForm.vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+const remove = (id) => {
+  store.dispatch('category/deleteItem', id);
+};
 </script>

@@ -1,6 +1,7 @@
 import axiosInstance from '@/utils/axios-instance';
 
 const module = {
+  namespaced: true,
   state() {
     return {
       list: [],
@@ -33,7 +34,7 @@ const module = {
       return resp.data.success;
     },
     async deleteItem({ commit }, id) {
-      const resp = await axiosInstance.delete(`/Categories/${id}`);
+      const resp = await axiosInstance.get(`/Categories/Delete/${id}`);
       if (resp.data.success) {
         commit('removeItem', id);
       }

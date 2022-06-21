@@ -1,32 +1,60 @@
 <template>
-  <div class="card card-side bg-base-100 border border-base-300 hover:shadow-2xl h-full
-    hover:bg-base-200">
+  <div class="card md:card-side card-compact bg-base-100 border border-base-300
+   hover:shadow-2xl h-full hover:bg-base-200">
     <figure>
-      <img
-        src="https://api.lorem.space/image/movie?w=200&h=280"
-        alt="Movie"
-      />
+      <div style="height:280px; width:200px">
+        <img
+          :src="props.item.posterPath || '/img/standart.png'"
+          alt="Movie"
+          class="h-full w-full object-contain"
+        />
+      </div>
     </figure>
-    <div class="card-body">
-      <h2 class="card-title">New movie is released!</h2>
-      <p>Click the button to watch on Jetflix app.</p>
+    <div class="card-body" style="width: 300px">
+      <h2 class="card-title text-2xl font-navigation capitalize">{{props.item.title}}</h2>
+      <p>
+        <span class="text-error font-bold text-3xl">
+          {{(new Date(props.item.startDate)).toLocaleString().split(' ')[0]}}
+        </span>
+        <br>
+        <span class="text-error font-bold text-xl">
+          {{(new Date(props.item.startDate)).toLocaleString().split(' ')[1]}}
+        </span>
+        <br><br>
+        <span class="text-primary font-bold text-xl">
+          {{props.item.placeTitle}},
+        </span>
+        <br>
+        <span class="text-success font-bold text-2xl">
+          {{props.item.city}}
+        </span>
+      </p>
       <div class="card-actions justify-end">
         <router-link :to="{
             name: 'Activity',
             params: {
-              categoryName: 'tiyatro',
-              categoryId: 1,
-              activityName: 'Tarkan Konser',
-              activityId: 1
+              categoryName: props.item.category.name,
+              categoryId: props.item.categoryId,
+              activityName: props.item.title,
+              activityId: props.item.id
             }
           }"
           class="btn btn-primary">
-          Watch
+          Detay
         </router-link>
       </div>
     </div>
   </div>
 </template>
+
+<script setup>
+const props = defineProps({
+  item: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
 
 <style>
 .card img {
