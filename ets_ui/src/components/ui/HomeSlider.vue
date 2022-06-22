@@ -25,7 +25,7 @@
     >
       <swiper-slide v-for="activity in $store.state.activity.recentList"
         :key="activity.id"
-        class="shadow-lg hover:scale-x-105 relative">
+        class="relative bg-transparent">
         <router-link :to="{
             name: 'Activity',
             params: {
@@ -35,7 +35,8 @@
               activityId: activity.id
             }
           }">
-          <div class="w-full relative" style="height: 50vh">
+          <div class="w-full relative img-container bg-transparent scale-95
+            hover:scale-100" style="height: 50vh">
             <img class="h-full w-full object-contain"
               :src="activity.posterPath || '/img/standart.png'"
               alt=""
@@ -118,5 +119,14 @@ export default {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+
+.img-container img {
+  filter: blur(0.5px) grayscale(0.1);
+  transition: 0.25s;
+}
+
+.img-container:hover img {
+  filter: blur(0px) grayscale(0) drop-shadow(10px 0px 10px gray);
 }
 </style>

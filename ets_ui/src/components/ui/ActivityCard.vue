@@ -56,7 +56,7 @@ const props = defineProps({
 });
 </script>
 
-<style>
+<style scoped>
 .card img {
   filter: blur(0.5px) grayscale(0.8);
   transition: 0.5s;

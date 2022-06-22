@@ -1,8 +1,8 @@
 <template>
-  <div class="navbar bg-info">
+  <div class="navbar bg-base-300 border-b border-white">
     <div class="navbar-start">
       <div class="dropdown mr-5">
-        <label tabindex="0" class="btn lg:hidden bg-info-content border-0 hover:bg-base-300">
+        <label tabindex="0" class="btn lg:hidden bg-base-200 border-0 hover:bg-base-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
@@ -21,75 +21,96 @@
         <ul
           tabindex="0"
           class="
+            border border-white
             menu menu-compact
             dropdown-content
             mt-3
             p-2
             shadow
-            bg-info
+            bg-base-300
             rounded-box
             w-52
           "
         >
           <li v-for="category in $store.state.category.list"
             :key="category.id"
-            class="text-info-content">
+            class="text-base-300-content">
               <router-link :to="{
                 name: 'Category',
                 params: {
                   categoryName: category.name,
                   categoryId: category.id,
                 }
-              }" class="link-item font-navigation tracking-wider">
+              }"
+              class="font-navigation tracking-wider"
+              active-class="text-error bg-warning"
+              >
                 {{category.name}}
               </router-link>
           </li>
-          <li class="text-info-content">
+          <li class="text-base-300-content">
             <router-link :to="{
               name: 'PastActivities',
-            }" class="link-item font-navigation tracking-wider">
+            }"
+            class="font-navigation tracking-wider"
+            active-class="text-error bg-warning"
+            >
               Geçmiş
             </router-link>
           </li>
-          <li class="text-info-content">
+          <li class="text-base-300-content">
             <router-link :to="{
               name: 'Admin',
-            }" class="link-item font-navigation tracking-wider">
+            }"
+            class="font-navigation tracking-wider"
+            active-class="text-error bg-warning"
+            >
               Admin
             </router-link>
           </li>
-          <SearchBar/>
+          <div class="mt-4">
+            <SearchBar/>
+          </div>
         </ul>
       </div>
-      <router-link to="/" class="normal-case text-xl text-info-content">
+      <router-link to="/" class="normal-case text-xl text-base-300-content">
         <img src="/ets-logo.png" alt="logo" class="md:h-12 h-10 img-logo"/>
       </router-link>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0 font-navigation tracking-widest">
         <li v-for="category in $store.state.category.list" :key="category.id"
-          class="text-info-content mx-2">
+          class="text-base-300-content mx-2">
           <router-link :to="{
             name: 'Category',
             params: {
               categoryName: category.name,
               categoryId: category.id,
             }
-          }" class="link-item">
+          }"
+          class="link-item"
+          active-class="text-error"
+          >
             {{category.name}}
           </router-link>
         </li>
-        <li class="text-info-content mx-2">
+        <li class="text-base-300-content mx-2">
           <router-link :to="{
             name: 'PastActivities',
-          }" class="link-item">
+          }"
+          class="link-item"
+          active-class="text-error"
+          >
             Geçmiş
           </router-link>
         </li>
-        <li class="text-info-content mx-2">
+        <li class="text-base-300-content mx-2">
           <router-link :to="{
             name: 'Admin',
-          }" class="link-item">
+          }"
+          class="link-item"
+          active-class="text-error"
+          >
             Admin
           </router-link>
         </li>
@@ -104,7 +125,7 @@
         <input type="checkbox" @change="changeTheme" :checked="$store.state.theme === 'winter'"/>
         <!-- sun icon -->
         <svg
-          class="swap-on fill-current w-10 h-10 text-info-content"
+          class="swap-on fill-current w-10 h-10 text-base-300-content"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -116,7 +137,7 @@
 
         <!-- moon icon -->
         <svg
-          class="swap-off fill-current w-10 h-10 text-info-content"
+          class="swap-off fill-current w-10 h-10 text-base-300-content"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -160,7 +181,7 @@ const changeTheme = (e) => {
   height: 1.5px;
   background: black;
   position: absolute;
-  top: 44px;
+  top: 40px;
   left: 7px;
   transition: 0.3s;
   transform-origin: left;
@@ -178,7 +199,7 @@ const changeTheme = (e) => {
   height: 1.5px;
   background: black;
   position: absolute;
-  top: 35px;
+  top: 30px;
   left: 0;
   transition: 0.3s;
   transform-origin: right;
