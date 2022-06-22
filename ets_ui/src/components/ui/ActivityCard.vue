@@ -3,35 +3,60 @@
    hover:shadow-2xl h-full hover:bg-base-200">
     <figure>
       <div style="height:280px; width:200px">
-        <img
-          :src="props.item.posterPath || '/img/standart.png'"
-          alt="Movie"
-          class="h-full w-full object-contain"
-        />
+        <router-link :to="{
+            name: 'Activity',
+            params: {
+              categoryName: props.item.category.name,
+              categoryId: props.item.categoryId,
+              activityName: props.item.title,
+              activityId: props.item.id
+            }
+          }">
+          <img
+            :src="props.item.posterPath || '/img/standart.png'"
+            alt="Movie"
+            class="h-full w-full object-contain"
+          />
+        </router-link>
       </div>
     </figure>
     <div class="card-body" style="width: 300px">
-      <h2 class="card-title text-2xl font-navigation capitalize">{{props.item.title}}</h2>
-      <p>
-        <span class="text-error font-bold text-3xl">
-          {{(new Date(props.item.startDate)).toLocaleString().split(' ')[0]}}
-        </span>
-        <br>
-        <span class="text-error font-bold text-xl">
-          {{(new Date(props.item.startDate)).toLocaleTimeString('tr-TR', {
-            hour: '2-digit',
-            minute: '2-digit',
-          })}}
-        </span>
-        <br><br>
-        <span class="text-primary font-bold text-xl">
-          {{props.item.placeTitle}},
-        </span>
-        <br>
-        <span class="text-success font-bold text-2xl">
+      <h2 class="card-title text-2xl font-navigation capitalize text-error">
+        {{props.item.title}}
+      </h2>
+      <div>
+        <div class="flex flex-row items-center mb-4">
+          <div class="mr-4">
+            <span class=" text-6xl font-bold">
+              {{(new Date(props.item.startDate)).getDate()}}
+            </span>
+          </div>
+          <div class="mr-4 text-center">
+            <span class=" text-xl font-bold">
+              {{(new Date(props.item.startDate)).toLocaleString('tr', {  month: 'short' })}}
+            </span>
+            <br>
+            <span class=" text-xl font-bold">
+              {{(new Date(props.item.startDate)).getFullYear()}}
+            </span>
+          </div>
+          <div class="mr-4 text-center">
+            <span class=" text-xl font-bold">
+              {{(new Date(props.item.startDate)).toLocaleString('tr', {  weekday: 'short' })}}
+            </span>
+            <br>
+            <span class="text-xl font-bold">
+              {{(new Date(props.item.startDate)).toLocaleTimeString('tr', {
+                hour: '2-digit',
+                minute: '2-digit',
+              })}}
+            </span>
+          </div>
+        </div>
+        <div class="capitalize font-bold text-2xl">
           {{props.item.city}}
-        </span>
-      </p>
+        </div>
+      </div>
       <div class="card-actions justify-end">
         <router-link :to="{
             name: 'Activity',
@@ -42,7 +67,7 @@
               activityId: props.item.id
             }
           }"
-          class="btn btn-primary">
+          class="btn btn-secondary">
           Detay
         </router-link>
       </div>

@@ -5,7 +5,7 @@
         <ActivityForm/>
       </ModalBox>
     </div>
-    <div class="mb-8 overflow-x-auto">
+    <div class="mb-8 overflow-x-auto" style="max-width: 100vw">
       <table class="table table-zebra w-full">
         <thead>
           <tr>

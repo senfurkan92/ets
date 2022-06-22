@@ -7,7 +7,7 @@
   <div class="grid grid-cols-4 gap-8" v-if="activity">
     <!-- POSTER -->
     <div class="lg:col-span-1 md:col-span-2 col-span-4 flex justify-center">
-      <div class="aspect-[5/7]" style="width: clamp(300px, 100%, 500px)">
+      <div class="aspect-[5/7]" style="width: clamp(300px, 100%, 500px); max-width: 90vw">
         <img style="filter: drop-shadow(10px 0px 10px gray)"
           class="w-full h-full object-contain"
           :src="activity.posterPath || '/img/standart.png'" alt=""/>
@@ -52,7 +52,7 @@
       </div>
     </div>
     <!-- MAP LOCATION -->
-    <div class="lg:col-span-2 lg:flex hidden justify-center">
+    <div class="lg:col-span-2 lg:flex hidden justify-center scale-75">
       <iframe title="" :src="activity.mapLocation || 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24483.207286767785!2d32.760805773334596!3d39.9100435019644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d3489dbdce88e5%3A0x3b7ba3b8611e1e12!2sEts%20Tur!5e0!3m2!1str!2str!4v1655844892790!5m2!1str!2str'" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <!-- TITLE -->
@@ -76,7 +76,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-span-4 px-8" v-if="activity.images">
+    <div class="col-span-4 px-8 overflow-x-hidden" v-if="activity.images" style="max-width: 100vw">
       <ActivitySlider :images="activity.images"/>
     </div>
     <div class="col-span-4 px-8 justify-center lg:hidden flex">

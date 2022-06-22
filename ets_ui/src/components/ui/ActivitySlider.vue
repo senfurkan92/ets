@@ -1,5 +1,6 @@
 <template>
-  <div class="body bg-gradient-to-b from-base-100 via-base-100 to-base-200 shadow-sm rounded-b-lg">
+  <div class="body bg-gradient-to-b from-base-100 via-base-100 to-base-200 shadow-sm
+    rounded-b-lg mx-auto">
     <swiper
       :effect="'coverflow'"
       :grabCursor="true"
