@@ -85,3 +85,8 @@ D:\_yazilim\dotnet\ets\ETS_TUR\WEB\bin\Release\net6.0\DAL.pdb
 D:\_yazilim\dotnet\ets\ETS_TUR\WEB\bin\Release\net6.0\DOMAIN.pdb
 D:\_yazilim\dotnet\ets\ETS_TUR\WEB\bin\Release\net6.0\DTOS.pdb
 D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\WEB.csproj.CopyComplete
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\bin\Release\net6.0\Microsoft.OpenApi.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\bin\Release\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\_yazilim\dotnet\ets\ETS_TUR\WEB\obj\Release\net6.0\WEB.MvcApplicationPartsAssemblyInfo.cs

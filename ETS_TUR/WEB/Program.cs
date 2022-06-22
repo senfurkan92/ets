@@ -4,6 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddDi();
 builder.Services.AddCors(config => {
     config.AddPolicy(
@@ -32,6 +34,12 @@ app.UseCors();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapDefaultControllerRoute();
+});
+
+app.UseSwagger();
+app.UseSwaggerUI(config => {
+    config.RoutePrefix = "";
+    config.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
 });
 
 app.Run();
