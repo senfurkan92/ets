@@ -18,7 +18,10 @@
         </span>
         <br>
         <span class="text-error font-bold text-xl">
-          {{(new Date(props.item.startDate)).toLocaleString().split(' ')[1]}}
+          {{(new Date(props.item.startDate)).toLocaleTimeString('tr-TR', {
+            hour: '2-digit',
+            minute: '2-digit',
+          })}}
         </span>
         <br><br>
         <span class="text-primary font-bold text-xl">

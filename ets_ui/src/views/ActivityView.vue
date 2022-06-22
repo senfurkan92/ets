@@ -18,7 +18,7 @@
       <div class="flex flex-row items-center mb-4">
         <div class="mr-4">
           <span class=" text-8xl font-bold">
-            {{(new Date(activity.startDate)).getDay()}}
+            {{(new Date(activity.startDate)).getDate()}}
           </span>
         </div>
         <div class="mr-4 text-center">
