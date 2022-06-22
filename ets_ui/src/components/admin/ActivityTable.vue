@@ -57,6 +57,9 @@ onMounted(() => {
 });
 
 const remove = (id) => {
-  store.dispatch('activity/deleteItem', id);
+  // eslint-disable-next-line no-restricted-globals
+  if (confirm('Are you sure?')) {
+    store.dispatch('activity/deleteItem', id);
+  }
 };
 </script>

@@ -36,6 +36,9 @@ import { useStore } from 'vuex';
 const store = useStore();
 
 const remove = (id) => {
-  store.dispatch('category/deleteItem', id);
+  // eslint-disable-next-line no-restricted-globals
+  if (confirm('Are you sure? If you delete the category, all associated activities are deleted.')) {
+    store.dispatch('category/deleteItem', id);
+  }
 };
 </script>

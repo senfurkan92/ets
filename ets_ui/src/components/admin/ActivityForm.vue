@@ -285,14 +285,14 @@ const tickets = reactive([
 ]);
 
 const form = reactive({
-  title: 'title',
-  description: 'description',
-  city: 'city',
-  placeTitle: 'placeTitle',
-  mapLocation: 'https://www.flaticon.com/',
-  address: 'address',
-  startDate: '2022-12-20 22:33',
-  categoryId: '4',
+  title: '',
+  description: '',
+  city: '',
+  placeTitle: '',
+  mapLocation: '',
+  address: '',
+  startDate: '',
+  categoryId: '',
 });
 
 const date = helpers.regex(/[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/);
